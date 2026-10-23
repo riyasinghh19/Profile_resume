@@ -246,6 +246,26 @@ html.pen,html.pen *{cursor:none!important}
 .splash{position:fixed;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;border:2.5px solid var(--cobalt);pointer-events:none;z-index:99;animation:splash .55s ease-out forwards}
 @keyframes splash{to{transform:scale(5);opacity:0}}
 
+/* resume download */
+.resume-box{border:2.5px solid var(--ink);border-radius:22px;background:var(--card);box-shadow:8px 8px 0 var(--ink);padding:28px;display:flex;flex-wrap:wrap;gap:24px;align-items:center}
+.resume-copy{flex:1 1 280px;min-width:0;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.resume-copy p{font-size:16.5px;color:var(--muted);max-width:44ch}
+.resume-stage{flex:1.5 1 360px;min-width:0}
+.resume-stage svg{width:100%;height:auto;display:block;overflow:visible}
+.dlstatus{font-family:var(--f-type);font-size:15px;color:var(--muted);min-height:1.4em}
+.dlstatus.ok{color:var(--cobalt)}
+.mpeek{animation:peek 4.5s ease-in-out infinite}
+@keyframes peek{0%,60%,100%{transform:translateX(0)}70%,85%{transform:translateX(14px)}}
+.nose{transform-box:fill-box;transform-origin:center;animation:sniff .6s ease-in-out infinite alternate}
+@keyframes sniff{to{transform:scale(1.35)}}
+.leg{transform-box:fill-box;transform-origin:50% 0}
+.running .mpeek{animation:none}
+.running .leg1{animation:legs .16s linear infinite alternate}
+.running .leg2{animation:legs .16s linear -.08s infinite alternate}
+@keyframes legs{from{transform:rotate(-35deg)}to{transform:rotate(35deg)}}
+#trackFill{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(0)}
+#flap{transform-box:fill-box;transform-origin:50% 100%}
+
 /* hire-me form */
 .hire{width:100%;max-width:680px;text-align:left;border:2.5px solid var(--ink);border-radius:22px;background:var(--card);box-shadow:8px 8px 0 var(--cobalt);padding:28px;display:flex;flex-direction:column;gap:18px;margin-top:18px}
 .hire h3{font-family:var(--f-type);font-size:clamp(20px,2.4vw,26px);font-weight:400;letter-spacing:0;line-height:1.25}
@@ -336,6 +356,7 @@ html.pen,html.pen *{cursor:none!important}
       <a href="#work">work</a>
       <a href="#projects">projects</a>
       <a href="#skills">skills</a>
+      <a href="#resume">resume</a>
       <a href="#contact">say hi</a>
     </div>
   </div>
@@ -410,6 +431,7 @@ html.pen,html.pen *{cursor:none!important}
         <div class="cta">
           <a class="btn primary" href="#pipeline">run my pipeline →</a>
           <a class="btn" href="#contact">get in touch</a>
+          <a class="btn" href="#resume">resume ↓</a>
         </div>
       </div>
       <div class="polaroid-wrap">
@@ -557,6 +579,64 @@ html.pen,html.pen *{cursor:none!important}
           <div class="edu-row"><div><b>B.E., Information Technology</b><div>Sinhgad Institute of Technology, Pune University</div></div><div class="mono">2016 – 2020 · 7.34 CGPA</div></div>
           <div class="edu-row"><div><b>12th / HSC</b><div>S.V Union</div></div><div class="mono">2016 · 80%</div></div>
           <div class="edu-row"><div><b>10th / SSC</b><div>St. Mira's Secondary School</div></div><div class="mono">2014 · 84.80%</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <div class="wrap">
+      <div class="resume-box">
+        <div class="resume-copy">
+          <div class="eyebrow">Resume · PDF</div>
+          <h2 style="font-size:clamp(32px,4.5vw,46px);font-weight:800">Want it on paper?</h2>
+          <p>One page, everything above. My assistant will fetch it for you.</p>
+          <a class="btn primary" id="dlBtn" href="Riya_Singh_Resume.pdf" download="Riya_Singh_Resume.pdf">download my resume ↓</a>
+          <div class="dlstatus" id="dlStatus" aria-live="polite">resume.pdf · ready</div>
+        </div>
+        <div class="resume-stage" id="resumeStage">
+          <svg viewBox="0 0 640 170" role="img" aria-label="A small sketched mouse peeking out from behind a resume page, with a dashed track leading to a downloads folder">
+            <g stroke="var(--ink)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 134 H630" fill="none" stroke-width="2" stroke-dasharray="2 9" opacity=".6"/>
+              <line id="trackFill" x1="104" y1="134" x2="556" y2="134" stroke="var(--cobalt)" stroke-width="5"/>
+              <g transform="translate(78 128)">
+                <g id="mouseRun">
+                  <g class="mpeek">
+                    <g id="carry" opacity="0">
+                      <rect x="-16" y="-52" width="24" height="30" rx="2" fill="var(--card)" transform="rotate(-10 -4 -37)"/>
+                      <path d="M-11 -44 h13 M-11 -38 h10 M-11 -32 h13" fill="none" stroke-width="1.5" transform="rotate(-10 -4 -37)"/>
+                    </g>
+                    <path d="M-22 -10 q-18 -2 -16 -18 q2 -10 10 -6" fill="none"/>
+                    <path class="leg leg1" d="M-10 -2 v8" fill="none"/>
+                    <path class="leg leg2" d="M10 -2 v8" fill="none"/>
+                    <ellipse cx="0" cy="-12" rx="23" ry="13" fill="var(--card)"/>
+                    <circle cx="20" cy="-17" r="11" fill="var(--card)"/>
+                    <circle cx="15" cy="-29" r="7" fill="var(--card)"/>
+                    <circle cx="15" cy="-29" r="3" fill="var(--marker)" stroke="none"/>
+                    <circle cx="24" cy="-19" r="1.8" fill="var(--ink)" stroke="none"/>
+                    <circle class="nose" cx="31" cy="-15" r="2.4" fill="var(--cobalt)" stroke="none"/>
+                    <path d="M30 -13 l10 -2 M30 -12 l10 3" fill="none" stroke-width="1.2"/>
+                  </g>
+                </g>
+              </g>
+              <g id="paper">
+                <rect x="36" y="56" width="60" height="74" rx="3" fill="var(--card)"/>
+                <path d="M84 56 v12 h12" fill="none" stroke-width="2"/>
+                <text x="48" y="80" font-family="Caveat, cursive" font-size="18" font-weight="700" fill="var(--cobalt)" stroke="none">RS</text>
+                <path d="M46 92 h40 M46 102 h32 M46 112 h40 M46 121 h24" fill="none" stroke-width="1.6"/>
+              </g>
+              <g id="folder">
+                <path d="M562 92 h22 l6 8 h32 v34 h-60z" fill="var(--card)"/>
+                <g id="flap">
+                  <path d="M556 108 h72 l-6 26 h-60z" fill="var(--card)"/>
+                  <g class="reveal"><path d="M556 108 h72 l-6 26 h-60z" fill="var(--cobalt)"/></g>
+                  <path d="M556 108 h72 l-6 26 h-60z" fill="none"/>
+                </g>
+                <path id="tick" d="M580 120 l7 7 14 -15" fill="none" stroke="var(--on-cobalt)" stroke-width="3" opacity="0"/>
+              </g>
+            </g>
+            <text x="592" y="160" text-anchor="middle" font-family="Caveat, cursive" font-size="20" font-weight="700" fill="var(--muted)">downloads</text>
+          </svg>
         </div>
       </div>
     </div>
@@ -784,6 +864,63 @@ html.pen,html.pen *{cursor:none!important}
       card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
     });
   }
+})();
+</script>
+
+<script>
+(function(){
+  var btn = document.getElementById('dlBtn'), stage = document.getElementById('resumeStage'), status = document.getElementById('dlStatus');
+  var href = btn.getAttribute('href'), busy = false;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function realDownload(){
+    var a = document.createElement('a');
+    a.href = href; a.download = 'Riya_Singh_Resume.pdf';
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  function done(){
+    status.textContent = 'saved to your downloads ✓'; status.classList.add('ok');
+    realDownload();
+    setTimeout(function(){ busy = false; }, 800);
+  }
+  btn.addEventListener('click', function(e){
+    e.preventDefault();
+    if (busy) return; busy = true;
+    var run = document.getElementById('mouseRun'), carry = document.getElementById('carry');
+    var fill = document.getElementById('trackFill'), folder = document.getElementById('folder');
+    var flap = document.getElementById('flap'), tick = document.getElementById('tick');
+    if (reduce || !run.animate){ folder.classList.add('on'); tick.setAttribute('opacity', '1'); done(); return; }
+    status.classList.remove('ok'); folder.classList.remove('on'); tick.setAttribute('opacity', '0');
+    status.textContent = 'fetching resume.pdf · 0%';
+    var opt = {fill:'forwards', easing:'ease-in-out'};
+    run.animate([{transform:'translate(0px,0px)'},{transform:'translate(26px,0px)'}], {duration:350, fill:'forwards', easing:'ease-out'}).finished
+    .then(function(){ return carry.animate([{opacity:0, transform:'translate(-24px,30px) scale(.4)'},{opacity:1, transform:'translate(0px,0px) scale(1)'}], {duration:420, fill:'forwards', easing:'cubic-bezier(.2,1.4,.4,1)'}).finished; })
+    .then(function(){
+      stage.classList.add('running');
+      var T = 1500, t0 = performance.now();
+      fill.animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}], {duration:T, fill:'forwards', easing:'ease-in-out'});
+      (function tickPct(now){
+        var p = Math.min(1, (now - t0) / T);
+        status.textContent = 'fetching resume.pdf · ' + Math.round(p * 100) + '%';
+        if (p < 1) requestAnimationFrame(tickPct);
+      })(t0);
+      return run.animate([{transform:'translate(26px,0px)'},{transform:'translate(436px,0px)'}], Object.assign({duration:T}, opt)).finished;
+    })
+    .then(function(){
+      stage.classList.remove('running');
+      return carry.animate([{opacity:1, transform:'translate(0px,0px) rotate(0deg)'},{opacity:1, transform:'translate(38px,-34px) rotate(25deg)', offset:.5},{opacity:0, transform:'translate(64px,4px) rotate(60deg) scale(.5)'}], {duration:520, fill:'forwards', easing:'ease-in'}).finished;
+    })
+    .then(function(){
+      folder.classList.add('on');
+      flap.animate([{transform:'scaleY(1)'},{transform:'scaleY(.8)'},{transform:'scaleY(1.06)'},{transform:'scaleY(1)'}], {duration:500});
+      tick.setAttribute('opacity', '1');
+      done();
+      setTimeout(function(){
+        run.animate([{transform:'translate(436px,0px)'},{transform:'translate(436px,0px) scaleX(-1)', offset:.05},{transform:'translate(0px,0px) scaleX(-1)', offset:.95},{transform:'translate(0px,0px)'}], {duration:1400, fill:'forwards', easing:'ease-in-out'});
+        stage.classList.add('running');
+        setTimeout(function(){ stage.classList.remove('running'); carry.animate([{opacity:0}], {duration:1, fill:'forwards'}); }, 1400);
+      }, 900);
+    });
+  });
 })();
 </script>
 
