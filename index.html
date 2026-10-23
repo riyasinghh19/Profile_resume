@@ -8,6 +8,7 @@
 <meta property="og:description" content="I make the numbers show up on time.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%232346E8%27/%3E%3Ctext x=%2732%27 y=%2743%27 font-family=%27Georgia%27 font-size=%2730%27 font-weight=%27700%27 text-anchor=%27middle%27 fill=%27white%27%3ERS%3C/text%3E%3C/svg%3E">
 <style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<script data-goatcounter="https://riyasingh.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <title>Riya Singh</title>
@@ -879,6 +880,7 @@ html.pen,html.pen *{cursor:none!important}
   }
   function done(){
     status.textContent = 'saved to your downloads ✓'; status.classList.add('ok');
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:'resume-download', title:'Resume downloaded', event:true}); } catch(e){}
     realDownload();
     setTimeout(function(){ busy = false; }, 800);
   }
@@ -948,6 +950,7 @@ html.pen,html.pen *{cursor:none!important}
       })
     }).then(function(r){ return r.json().then(function(j){ if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || 'failed'); }); })
     .then(function(){
+      try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:'form-message-sent', title:'Form message sent', event:true}); } catch(e){}
       var name = val('f-name').split(' ')[0];
       form.innerHTML = '<div class="sent"><svg viewBox="0 0 120 80" aria-hidden="true"><g class="plane" fill="var(--card)" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"><path d="M10 44 L110 8 L70 72 L56 50 Z"/><path d="M56 50 L110 8" fill="none"/><path d="M56 50 L60 66 L70 72" fill="var(--cobalt)"/></g></svg><h3></h3><p class="sub"></p></div>';
       form.querySelector('h3').textContent = 'Thanks, ' + name + '. Message sent.';
