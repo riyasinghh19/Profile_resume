@@ -800,12 +800,13 @@ html.pen,html.pen *{cursor:none!important}
     if (val('f-honey')) return;
     var purpose = form.querySelector('input[name="purpose"]:checked').value;
     btn.disabled = true; btn.textContent = 'sending…'; say('');
-    fetch('https://formsubmit.co/ajax/' + INBOX, {
+    fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
       body: JSON.stringify({
-        _subject: 'Portfolio: ' + purpose + ' from ' + val('f-company'),
-        _template: 'table', _captcha: 'false',
+        access_key: '43732de4-289e-45c8-9e03-f914e792ba83',
+        subject: 'Portfolio: ' + purpose + ' from ' + val('f-company'),
+        from_name: val('f-name') + ' (' + val('f-company') + ')',
         purpose: purpose, name: val('f-name'), company: val('f-company'), email: val('f-email'), message: val('f-msg')
       })
     }).then(function(r){ return r.json().then(function(j){ if (!r.ok || String(j.success) !== 'true') throw new Error(j.message || 'failed'); }); })
